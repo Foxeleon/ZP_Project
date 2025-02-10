@@ -17,7 +17,7 @@ async function dropClaimer() {
 
             // Ждем появления кнопки подтверждения
             console.log('[DROP] Ожидание кнопки подтверждения...');
-            const confirmButton = await waitForElement('#ModalWrapperComponent > div.sc-khLCKb.sc-jhZTHU.bHgMog.bhGQFX > div', 5000);
+            const confirmButton = await waitForElement('#ModalWrapperComponent > div.sc-khLCKb.sc-jhZTHU.eucHEN.bhGQFX > div', 5000);
 
             if (confirmButton) {
                 confirmButton.click();
