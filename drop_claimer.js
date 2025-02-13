@@ -12,7 +12,7 @@ async function dropClaimer() {
             }
 
             console.log('[DROP] Найдена кнопка дропа');
-            dropButton.click();
+            simulateHumanClick(dropButton);
             console.log('[DROP] Нажата кнопка дропа');
 
             // Ждем появления кнопки подтверждения
@@ -20,7 +20,7 @@ async function dropClaimer() {
             const confirmButton = await waitForElement('#ModalWrapperComponent > div.sc-khLCKb.sc-jhZTHU.eucHEN.bhGQFX > div', 5000);
 
             if (confirmButton) {
-                confirmButton.click();
+                simulateHumanClick(confirmButton);
                 console.log('[DROP] Нажата кнопка подтверждения');
             }
 
@@ -34,6 +34,44 @@ async function dropClaimer() {
     }
 
     console.log('[DROP] Скрипт завершил работу');
+}
+
+function simulateHumanClick(element) {
+    const rect = element.getBoundingClientRect();
+
+    // Получаем случайные координаты в пределах области 20x20 пикселей
+    const x = rect.left + rect.width/2 + (Math.random() * 20 - 10);
+    const y = rect.top + rect.height/2 + (Math.random() * 20 - 10);
+
+    // Создаем события мыши
+    const mouseDown = new MouseEvent('mousedown', {
+        bubbles: true,
+        cancelable: true,
+        view: window,
+        clientX: x,
+        clientY: y
+    });
+
+    const mouseUp = new MouseEvent('mouseup', {
+        bubbles: true,
+        cancelable: true,
+        view: window,
+        clientX: x,
+        clientY: y
+    });
+
+    const click = new MouseEvent('click', {
+        bubbles: true,
+        cancelable: true,
+        view: window,
+        clientX: x,
+        clientY: y
+    });
+
+    // Отправляем события
+    element.dispatchEvent(mouseDown);
+    element.dispatchEvent(mouseUp);
+    element.dispatchEvent(click);
 }
 
 function waitForElement(selector, timeout = 5000) {
