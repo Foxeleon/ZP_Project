@@ -4,7 +4,7 @@ async function dropClaimer() {
     while (true) {
         try {
             // Ждем появления кнопки дропа
-            const dropButton = await waitForElement('#root > div > div > div > div.sc-dstKZu.sc-keTIit.dMGtil.qLQzp > div.sc-dstKZu.sc-bPCIsI.iocKyd.cUmOSp > div > div:nth-child(1) > div.sc-dstKZu.kBJVrf > div:nth-child(2) > div.sc-khLCKb.sc-eMwmJz.jEPToZ.hgfYHN', 5000);
+            const dropButton = await waitForElement('#root > div > div > div > div.sc-keTIit.sc-dpBQxM.jWrQnU.jTRQep > div.sc-keTIit.sc-gluGTh.eixkcc.jQjXUq > div > div:nth-child(1) > div.sc-keTIit.gRUJyW > div:nth-child(2) > div.sc-dstKZu.sc-drVZOg.grXdHv.hvXREJ', 5000);
 
             if (!dropButton) {
                 console.log('[DROP] Кнопка дропа не найдена. Завершение работы');
@@ -17,7 +17,7 @@ async function dropClaimer() {
 
             // Ждем появления кнопки подтверждения
             console.log('[DROP] Ожидание кнопки подтверждения...');
-            const confirmButton = await waitForElement('#ModalWrapperComponent > div.sc-khLCKb.sc-jhZTHU.eucHEN.bhGQFX > div', 5000);
+            const confirmButton = await waitForElement('#ModalWrapperComponent > div.sc-dstKZu.sc-epnzzT.eYosiC.cgRJVh > div', 5000);
 
             if (confirmButton) {
                 simulateHumanClick(confirmButton);
